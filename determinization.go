@@ -7,24 +7,6 @@ import (
 
 const lambda string = "lambda"
 
-/**
-5
-8
-
-0 1 a
-0 2 a
-1 3 b
-3 1 lambda
-3 3 a
-2 4 c
-4 4 a
-4 4 b
-
-0 0 0 1 1
-
-0
- */
-
 func contains (str string, v []string) bool {
 	for i := range v {
 		if v[i] == str {
@@ -96,24 +78,7 @@ func index (zr[] int, Q[] []int) int {
 	}
 	return 0
 }
-/*
-func print2DSlice (sl[][] int) {
-	for i := range sl {
-		for j := range sl[i] {
-			fmt.Print(sl[i][j], " ")
-		}
-		fmt.Println()
-	}
-	fmt.Println()
-}
 
-func printSlice (sl[] int) {
-	for i := range sl {
-		fmt.Print(sl[i], " ")
-	}
-	fmt.Println()
-}
-*/
 func printElemOfMap (s[] string) {
 	for i := 0; i < len(s); i++ {
 		fmt.Print(s[i])
@@ -157,10 +122,11 @@ func main()  {
 		fmt.Scan(&v1)
 		fmt.Scan(&v2)
 		fmt.Scan(&label)
+		
 		if label != lambda && !contains(label, Alf) {
 			Alf = append(Alf, label)
 		}
-		//	mapp[v1][v2] = append(mapp[v1][v2], label)
+		
 		q[v1][v2] = append(q[v1][v2], label)
 	}
 
@@ -173,36 +139,6 @@ func main()  {
 	fmt.Scan("\n")
 	var base int
 	fmt.Scan(&base)
-
-	/*
-	fmt.Print(nCond, "\n")
-	fmt.Print(m, "\n")
-
-	for i := 0; i < nCond; i++ {
-		for j := 0; j < nCond; j++ {
-			fmt.Print(q[i][j], " ")
-		}
-		fmt.Println()
-	}
-
-
-	fmt.Println()
-	for i := 0; i < m; i++ {
-		fmt.Print(i, " -> ", mapp[i])
-		fmt.Println()
-	}
-
-
-
-	for i := 0; i < nCond; i++ {
-		fmt.Print(final[i], " ")
-	}
-	fmt.Println()
-	fmt.Print(base, "\n")
-
-	fmt.Print(q[nCond - 1][nCond - 1][0])
-	*/
-
 
 	b := make ([] int, 0)
 	b = append(b, base)
@@ -247,11 +183,7 @@ func main()  {
 				Q = append(Q, zr)
 				Stack = append(Stack, zr)
 			}
-			/*
-			fmt.Print("index(z, Q) ", index(z, Q), "\n")
-			fmt.Print("index(zr, Q) ", index(zr, Q), "\n")
-			fmt.Print("i ", i, "\n")
-			*/
+			
 			if (index(z, Q) >= nCond) {
 				delta = append(delta, make([] int, len(Alf)))
 			}
@@ -269,17 +201,6 @@ func main()  {
 			mapp[i][delta[i][j]] = append(mapp[i][delta[i][j]], Alf[j])
 		}
 	}
-	/*
-		for i := 0; i < m; i++ {
-			fmt.Print(i, " -> ", mapp[i])
-			fmt.Println()
-		}
-		*/
-	//print2DSlice(delta)
-	//fmt.Print("---------------\n")
-	//print2DSlice(Q)
-	//fmt.Print("---------------\n")
-	//print2DSlice(F)
 
 	fmt.Print("digraph {\n")
 	fmt.Print("rankdir = LR\n")
